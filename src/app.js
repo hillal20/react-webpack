@@ -1,6 +1,6 @@
 import React from "react";
 const fistImage = require("./images/pic.jpg");
-
+import Form from "./form/form";
 import "./styles/main.scss";
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
         <div class="title">Hello word all is here</div>
         <img src={fistImage} height="400" width="400" />
       </div>
+      <Form />
     </div>
   );
 };
