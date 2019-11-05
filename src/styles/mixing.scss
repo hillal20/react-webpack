@@ -1,0 +1,17 @@
+@mixin modifyingContainer {
+    width: 600px;
+    background: $greenColor;
+
+    img {
+        border: 4px solid black;
+        margin: 20px;
+    }
+}
+
+@mixin display-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

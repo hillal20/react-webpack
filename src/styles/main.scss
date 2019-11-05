@@ -1,0 +1,21 @@
+@import "variables";
+@import "mixing";
+
+
+
+
+body {
+    background: $redColor;
+    @include display-column();
+
+    .title {
+        color: $blueColor;
+    }
+
+
+}
+
+.container {
+    @include modifyingContainer();
+    @include display-column()
+}
