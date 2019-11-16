@@ -1,10 +1,23 @@
-import React, { useState } from "react";
-import { shallow } from "enzyme";
+import React, { useState, useContext } from "react";
+import { shallow, mount } from "enzyme";
 import Form, { testName } from "../form/form";
 import { finByDataAttribute, checkPropsFn } from "../../utils/reusedElements";
 
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+const initialState = { output: 10 };
+const mockStore = configureMockStore(initialState);
+
+const store = mockStore({
+  startup: { complete: false }
+});
+
 const setUpFn = props => {
-  return shallow(<Form {...props} />);
+  return mount(
+    <Provider store={store}>
+      <Form {...props} />
+    </Provider>
+  );
 };
 
 describe("==== testing the form ====== ", () => {

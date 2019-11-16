@@ -1,10 +1,14 @@
 import React from "react";
-const fistImage = require("./images/pic.jpg");
+import fistImage from "./images/pic.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import Form from "./form/form";
 import "./styles/main.scss";
 
+import { process } from "../assetsTransformer";
+
 const App = () => {
+  console.log("process ==> ", process());
+
   const dispatch = useDispatch();
 
   return (
