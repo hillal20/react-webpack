@@ -1,25 +1,69 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const Form = () => {
+let testName;
+const Form = props => {
+  const {
+    sirName,
+    age,
+    occupation,
+    formArray,
+    formObject,
+    formArrayOfObjects
+  } = props;
+
   const [name, setName] = useState("");
   const nameHandler = event => {
-    console.log("text==> ", event.target.value);
+    testName = event.target.value;
     setName(event.target.value);
+    console.log("e ==> ", event.target.value);
   };
   const submitHandler = event => {
     event.preventDefault();
-    console.log("==> ", name);
   };
 
+  if (!sirName) {
+    return <div> Nothing</div>;
+  }
+
   return (
-    <div>
+    <div className="formContainer">
       <h1> Form is here </h1>
-      <form onSubmit={submitHandler}>
+      <form data-test="form" onSubmit={submitHandler}>
         <p>Name:</p>
-        <input placeholder="Enter Name" onChange={nameHandler} />
+        <input
+          type="name"
+          name="name"
+          data-test="input"
+          placeholder="Enter Name"
+          value={name}
+          onChange={nameHandler}
+        />
         <input type="submit" name="Submit" />
       </form>
+      <div>name:{name}</div>
+      <div>SirName:{sirName}</div>
+      <div>age:{age}</div>
+      <div>occupation:{occupation}</div>
     </div>
   );
 };
+
+Form.propTypes = {
+  sirName: PropTypes.string,
+  age: PropTypes.number,
+  occupation: PropTypes.string,
+  formArray: PropTypes.array,
+  formObject: PropTypes.object,
+  formArrayOfObjects: PropTypes.arrayOf(
+    PropTypes.shape({
+      x: PropTypes.string,
+      y: PropTypes.string,
+      c: PropTypes.array,
+      f: PropTypes.bool
+    })
+  )
+};
+
+export { testName };
 export default Form;

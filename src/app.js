@@ -1,21 +1,43 @@
 import React from "react";
 const fistImage = require("./images/pic.jpg");
+import { useDispatch, useSelector } from "react-redux";
 import Form from "./form/form";
 import "./styles/main.scss";
+
 const App = () => {
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <div class="container">
+      <div className="container">
         <h2>Container 1</h2>
-        <div class="title">Hello word all is here</div>
-        <img src={fistImage} height="400" width="400" />
+        <div className="title">Hello word all is here</div>
+        <img data-test="img" src={fistImage} height="400" width="400" />
       </div>
-      <div class="container">
+      <button
+        onClick={() => {
+          dispatch({ type: "ACTION_ONE" });
+        }}
+      >
+        {" "}
+        GENERATE ACTION{" "}
+      </button>
+      <div className="container">
         <h2>Container 2</h2>
-        <div class="title">Hello word all is here</div>
-        <img src={fistImage} height="400" width="400" />
+        <div className="title">Hello word all is here</div>
+        <img data-test="img" src={fistImage} height="400" width="400" />
       </div>
-      <Form />
+      <Form
+        sirName="steve"
+        age={40}
+        occupation="teacher"
+        formArray={["hello", "word"]}
+        formObject={{ x: "hey", y: "guys" }}
+        formArrayOfObjects={[
+          { x: "bye", y: "bye", c: [], f: true },
+          { x: "bye", y: "bye", c: [], f: true }
+        ]}
+      />
     </div>
   );
 };
