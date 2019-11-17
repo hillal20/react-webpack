@@ -8,6 +8,7 @@ import configureMockStore from "redux-mock-store";
 const initialState = { output: 10 };
 const mockStore = configureMockStore(initialState);
 
+import { shallow, mount } from "enzyme";
 const store = mockStore({
   startup: { complete: false }
 });

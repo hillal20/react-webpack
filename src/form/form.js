@@ -15,7 +15,13 @@ const Form = props => {
   const [name, setName] = useState("");
   const nameHandler = event => {
     testName = event.target.value;
-    setName(event.target.value);
+
+    const re = /^[0-9\b]+$/;
+
+    if (event.target.value === "" || re.test(event.target.value)) {
+      setName(event.target.value);
+    }
+
     console.log("e ==> ", event.target.value);
   };
   const submitHandler = event => {
